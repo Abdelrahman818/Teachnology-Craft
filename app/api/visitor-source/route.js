@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 const BACKEND_VISITOR_API = process.env.VISITOR_API_URL || process.env.NEXT_PUBLIC_VISITOR_API_URL || "http://localhost:4000/api/visitor-source";
+const BACKEND_TEST_DOCUMENT_API = BACKEND_VISITOR_API.replace('/visitor-source', '/visitor-test-document');
 
 export async function GET(request) {
   const headers = new Headers();

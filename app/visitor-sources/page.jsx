@@ -1,25 +1,42 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getVisitorSourceUrl } from "../../lib/api";
+import { getVisitorSourceUrl, getVisitorTestDocumentUrl } from "../../lib/api";
 
 export default function VisitorSourcesPage() {
   const [sources, setSources] = useState([]);
+  const [testDocument, setTestDocument] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function loadSources() {
+    async function loadData() {
       try {
-        const response = await fetch(getVisitorSourceUrl());
-        if (!response.ok) {
-          throw new Error(`Server error ${response.status}`);
+        const [sourcesResponse, documentResponse] = await Promise.all([
+          fetch(getVisitorSourceUrl()),
+          fetch(getVisitorTestDocumentUrl()),
+        ]);
+
+        if (!sourcesResponse.ok) {
+          throw new Error(`Visitor source fetch failed: ${sourcesResponse.status}`);
         }
-        const data = await response.json();
-        if (!data.successful) {
-          throw new Error(data.msg || "Failed to load visitor sources.");
+
+        if (!documentResponse.ok) {
+          throw new Error(`Test document fetch failed: ${documentResponse.status}`);
         }
-        setSources(data.preview || []);
+
+        const sourcesData = await sourcesResponse.json();
+        const documentData = await documentResponse.json();
+
+        if (!sourcesData.successful) {
+          throw new Error(sourcesData.msg || "Failed to load visitor sources.");
+        }
+        if (!documentData.successful) {
+          throw new Error(documentData.msg || "Failed to load test document.");
+        }
+
+        setSources(sourcesData.preview || []);
+        setTestDocument(documentData.document || null);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -27,7 +44,7 @@ export default function VisitorSourcesPage() {
       }
     }
 
-    loadSources();
+    loadData();
   }, []);
 
   return (
@@ -38,6 +55,15 @@ export default function VisitorSourcesPage() {
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">Incoming Links & Visitor Count</h1>
           <p className="text-slate-400 text-base md:text-lg">This page shows the sites that link to Technology Craft and the number of unique visitors from each source.</p>
         </div>
+
+        {testDocument && (
+          <div className="rounded-3xl border border-slate-800/80 bg-slate-900/70 shadow-xl shadow-slate-950/40 overflow-hidden mb-10 p-6">
+            <div className="text-sm text-slate-400 uppercase tracking-[0.18em] font-semibold mb-4">Test document</div>
+            <pre className="whitespace-pre-wrap text-slate-200 text-sm bg-slate-950/80 rounded-2xl p-4 overflow-x-auto">
+              {JSON.stringify(testDocument, null, 2)}
+            </pre>
+          </div>
+        )}
 
         <div className="rounded-3xl border border-slate-800/80 bg-slate-900/70 shadow-xl shadow-slate-950/40 overflow-hidden">
           <div className="grid grid-cols-2 gap-4 bg-slate-950/90 px-6 py-4 text-slate-400 text-sm uppercase tracking-[0.18em] font-semibold">
