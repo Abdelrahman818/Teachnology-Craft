@@ -25,22 +25,30 @@ export async function GET(request) {
     headers.set("accept", forwarded.get("accept"));
   }
 
-  const response = await fetch(BACKEND_VISITOR_API, {
-    method: "GET",
-    headers,
-    cache: "no-store",
-  });
+  try {
+    const response = await fetch(BACKEND_VISITOR_API, {
+      method: "GET",
+      headers,
+      cache: "no-store",
+    });
 
-  const data = await response.text();
-  const json = response.headers.get("content-type")?.includes("application/json")
-    ? JSON.parse(data)
-    : { data };
+    const text = await response.text();
+    const json = response.headers.get("content-type")?.includes("application/json")
+      ? JSON.parse(text)
+      : { data: text };
 
-  const nextResponse = NextResponse.json(json, { status: response.status });
-  const setCookie = response.headers.get("set-cookie");
-  if (setCookie) {
-    nextResponse.headers.set("set-cookie", setCookie);
+    const nextResponse = NextResponse.json(json, { status: response.status });
+    const setCookie = response.headers.get("set-cookie");
+    if (setCookie) {
+      nextResponse.headers.set("set-cookie", setCookie);
+    }
+
+    return nextResponse;
+  } catch (error) {
+    return NextResponse.json({
+      successful: false,
+      msg: `Proxy error: ${error.message}`,
+      backendUrl: BACKEND_VISITOR_API,
+    }, { status: 500 });
   }
-
-  return nextResponse;
 }
