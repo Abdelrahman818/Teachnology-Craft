@@ -9,7 +9,9 @@ export async function GET(request) {
   if (forwarded.has("cookie")) {
     headers.set("cookie", forwarded.get("cookie"));
   }
-  if (forwarded.has("referer")) {
+  if (forwarded.has("x-original-referrer")) {
+    headers.set("referer", forwarded.get("x-original-referrer"));
+  } else if (forwarded.has("referer")) {
     headers.set("referer", forwarded.get("referer"));
   }
   if (forwarded.has("sec-fetch-mode")) {

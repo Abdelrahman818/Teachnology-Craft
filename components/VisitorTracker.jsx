@@ -19,6 +19,9 @@ export default function VisitorTracker() {
       method: "GET",
       credentials: "include",
       cache: "no-store",
+      headers: {
+        "X-Original-Referrer": referrer,
+      },
     })
       .then(async (response) => {
         const data = await response.json();
