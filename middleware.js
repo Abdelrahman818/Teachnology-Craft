@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const BACKEND_API = process.env.VISITOR_API_URL || "http://localhost:4000/api/visitor-source";
+const BACKEND_API = process.env.VISITOR_API_URL || process.env.NEXT_PUBLIC_VISITOR_API_URL || "http://localhost:4000/api/visitor-source";
 const FRONTEND_HOST = process.env.NEXT_PUBLIC_FRONTEND_HOST || "www.technology-craft.com";
 
 export async function middleware(request) {

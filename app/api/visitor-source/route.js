@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const BACKEND_VISITOR_API = process.env.VISITOR_API_URL || "http://localhost:4000/api/visitor-source";
+const BACKEND_VISITOR_API = process.env.VISITOR_API_URL || process.env.NEXT_PUBLIC_VISITOR_API_URL || "http://localhost:4000/api/visitor-source";
 
 export async function GET(request) {
   const headers = new Headers();

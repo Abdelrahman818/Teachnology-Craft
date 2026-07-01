@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getVisitorSourceUrl } from "../../lib/api";
 
 export default function VisitorSourcesPage() {
   const [sources, setSources] = useState([]);
@@ -10,7 +11,7 @@ export default function VisitorSourcesPage() {
   useEffect(() => {
     async function loadSources() {
       try {
-        const response = await fetch("/api/visitor-source");
+        const response = await fetch(getVisitorSourceUrl());
         if (!response.ok) {
           throw new Error(`Server error ${response.status}`);
         }

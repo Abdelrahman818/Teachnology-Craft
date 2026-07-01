@@ -91,7 +91,7 @@ export default function ContactForm() {
     setApiError("");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact` : "/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -185,7 +185,7 @@ export default function ContactForm() {
                   key="success"
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="min-h-[520px] rounded-2xl glass-panel p-8 md:p-12 flex flex-col items-center justify-center text-center"
+                  className="min-h-130 rounded-2xl glass-panel p-8 md:p-12 flex flex-col items-center justify-center text-center"
                 >
                   <div className="w-16 h-16 rounded-full bg-blue-500/15 text-blue-400 flex items-center justify-center mb-6">
                     <CheckCircle className="w-8 h-8" />
