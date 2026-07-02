@@ -33,7 +33,6 @@ export default function NavBar() {
           <Link href="/" className="hover:text-white transition-colors" text="Home" />
           <Link href="/services" className="hover:text-white transition-colors" text="Services" />
           <Link href="/about" className="hover:text-white transition-colors" text="About" />
-          <Link href="/visitor-sources" className="hover:text-white transition-colors" text="Visitor Sources" />
           <Link href="/contact" className="hover:text-white transition-colors" text="Contact" />
         </div>
         
@@ -50,7 +49,6 @@ export default function NavBar() {
           <div className="container mx-auto px-6 md:px-12 py-4 space-y-3">
               <Link href="/services" className="block text-slate-200 hover:text-white transition-colors" text="Services" />
             <Link href="/about" className="block text-slate-200 hover:text-white transition-colors" text="About" />
-            <Link href="/visitor-sources" className="block text-slate-200 hover:text-white transition-colors" text="Visitor Sources" />
             <Link href="/contact" className="block text-blue-400 hover:text-blue-300 font-medium transition-colors" text="Start a Project" />
           </div>
         </div>
