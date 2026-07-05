@@ -1,5 +1,3 @@
-import { Analytics } from "@vercel/analytics/next";
-
 import NavBar from "../components/NavBar";
 import Hero from "../components/Home/Hero";
 import Status from "../components/Home/Status";
@@ -13,7 +11,6 @@ export default function LandingPage() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50 font-sans overflow-hidden selection:bg-blue-500/30">
-      <Analytics />
       <NavBar />
       <Hero />
       <Status />
