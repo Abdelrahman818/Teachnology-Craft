@@ -24,7 +24,7 @@ export default function VisitorTracker() {
 
     console.log('VisitorTracker: sending tracking request on start', { referrer });
 
-    fetch("/api/visitor-source", {
+    fetch(process.env.NEXT_PUBLIC_VISITOR_API_URL, {
       method: "GET",
       credentials: "include",
       cache: "no-store",
