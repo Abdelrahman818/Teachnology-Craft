@@ -261,7 +261,7 @@ export default function ContactForm() {
                       >
                         <option disabled={true} value="">Select a service</option>
                         {services.map((service) => (
-                          <option key={service.name} value={service.target}>{service.name}</option>
+                          <option key={service.name} value={service.name}>{service.name}</option>
                         ))}
                       </select>
                       {errors.service && touched.service && <p className="mt-2 text-xs text-rose-400">{errors.service}</p>}
