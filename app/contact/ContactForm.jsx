@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Mail, MapPin, Phone } from "lucide-react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
+import { sendContactEmail } from "@/app/actions/sendContact";
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -91,16 +92,10 @@ export default function ContactForm() {
     setApiError("");
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact` : "/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+      const result = await sendContactEmail(values);
 
-      const payload = await response.json();
-
-      if (!response.ok) {
-        throw new Error(payload?.error || "Unable to send message. Please try again.");
+      if (!result.success) {
+        throw new Error(result.error || "Unable to send message. Please try again.");
       }
 
       setSubmitted(true);
