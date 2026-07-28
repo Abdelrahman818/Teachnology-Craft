@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { ClientMotionDiv } from "../../components/ClientMotion";
 import {
   ArrowRight,
   BarChart3,
@@ -12,6 +10,8 @@ import {
   Search,
   Server,
 } from "lucide-react";
+import Link from "next/link";
+import { ClientMotionDiv } from "../../components/ClientMotion";
 import { PageHero, PageShell, PrimaryLink, SectionIntro } from "../../components/InnerPage";
 export { servicesMetadata as metadata } from "../../lib/pageMetadata";
 

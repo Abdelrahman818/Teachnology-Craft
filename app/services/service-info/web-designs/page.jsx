@@ -21,14 +21,75 @@ const offerings = [
     details: "Validate experience assumptions with clickable prototypes and user-focused feedback cycles.",
   },
 ];
+const services = [
+  {
+    title: "User Experience Research",
+    detail:
+      "Understand user behaviour, business goals, and customer needs to create digital experiences that solve real problems.",
+  },
+  {
+    title: "Wireframing & Prototyping",
+    detail:
+      "Visualise ideas with interactive wireframes and prototypes before development begins, reducing risk and improving project outcomes.",
+  },
+  {
+    title: "User Interface Design",
+    detail:
+      "Design modern, responsive, and visually consistent interfaces that are easy to navigate across desktop, tablet, and mobile devices.",
+  },
+  {
+    title: "Design Systems",
+    detail:
+      "Build scalable design systems with reusable components, typography, colours, and UI patterns that ensure consistency across every product.",
+  },
+];
+const designs = [
+  "Website UI Design",
+  "Mobile App UI",
+  "Dashboard Design",
+  "SaaS Platforms",
+  "Landing Pages",
+  "Wireframes",
+  "Interactive Prototypes",
+  "User Flows",
+  "Design Systems",
+  "Responsive Design",
+  "Accessibility Design",
+  "UX Research",
+];
+const whyDesigns = [
+  {
+    title: "Improve User Satisfaction",
+    detail:
+      "Simple navigation and intuitive interfaces make it easier for users to achieve their goals quickly and confidently.",
+  },
+  {
+    title: "Increase Conversion Rates",
+    detail:
+      "Well-designed user journeys encourage visitors to take action, whether it's making a purchase, requesting a quote, or contacting your business.",
+  },
+  {
+    title: "Build Brand Trust",
+    detail:
+      "Professional, consistent design strengthens your brand image and creates positive first impressions with potential customers.",
+  },
+  {
+    title: "Reduce Development Costs",
+    detail:
+      "Early research, wireframing, and prototyping help identify usability issues before development, saving time and resources.",
+  },
+];
 
 export default function WebDesigns() {
   return (
     <PageShell>
+      
+      {/* HERO */}
       <PageHero eyebrow="UI / UX Design" title="Design systems that feel unforced." icon={LayoutGrid}>
         We shape products with clear information architecture, consistent visuals, and interactions that feel fast.
       </PageHero>
 
+      {/* INTRO */}
       <section className="py-24">
         <div className="container mx-auto px-6 md:px-12">
           <SectionIntro eyebrow="Experience Design" title="Design that supports real user behavior.">
@@ -53,6 +114,109 @@ export default function WebDesigns() {
         </div>
       </section>
 
+      {/* SERVICES */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 md:px-12">
+          <SectionIntro
+            eyebrow="Design Services"
+            title="User experiences designed to engage and convert."
+          >
+            Technology Craft creates intuitive user interfaces and seamless user
+            experiences that improve usability, increase customer satisfaction, and
+            help businesses achieve their digital goals through thoughtful,
+            user-centred design.
+          </SectionIntro>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {services.map((item) => (
+              <ClientMotionDiv
+                key={item.title}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45 }}
+                className="rounded-3xl border border-slate-800 bg-slate-950/70 p-8"
+              >
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {item.title}
+                </h3>
+
+                <p className="text-slate-400 leading-relaxed">
+                  {item.detail}
+                </p>
+              </ClientMotionDiv>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DESIGNS */}
+      <section className="py-24 bg-slate-900/70 border-y border-slate-800">
+        <div className="container mx-auto px-6 md:px-12">
+          <SectionIntro
+            eyebrow="Design Expertise"
+            title="Creating interfaces for every digital platform."
+          >
+            Our UI/UX designers build engaging digital experiences for websites,
+            mobile applications, desktop software, SaaS platforms, and enterprise
+            systems with a focus on usability and accessibility.
+          </SectionIntro>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {designs.map((item) => (
+              <ClientMotionDiv
+                key={item}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="rounded-3xl border border-slate-800 bg-slate-950/70 p-6 flex items-center justify-center"
+              >
+                <span className="text-lg font-semibold text-white text-center">
+                  {item}
+                </span>
+              </ClientMotionDiv>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY DESIGNS */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 md:px-12">
+          <SectionIntro
+            eyebrow="Why UI/UX"
+            title="Better user experiences create better business results."
+          >
+            Great design goes beyond aesthetics. A well-designed interface improves
+            usability, reduces friction, increases customer satisfaction, and helps
+            businesses convert more visitors into loyal customers.
+          </SectionIntro>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {whyDesigns.map((item) => (
+              <ClientMotionDiv
+                key={item.title}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45 }}
+                className="rounded-3xl border border-slate-800 bg-slate-950/70 p-8"
+              >
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {item.title}
+                </h3>
+
+                <p className="text-slate-400 leading-relaxed">
+                  {item.detail}
+                </p>
+              </ClientMotionDiv>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED CARD */}
       <section className="py-24 bg-slate-900/70 border-t border-b border-slate-800">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid gap-10 lg:grid-cols-2 items-center">
@@ -86,6 +250,7 @@ export default function WebDesigns() {
         </div>
       </section>
 
+      {/* CTA */}
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-600/5" />
         <div
@@ -100,6 +265,7 @@ export default function WebDesigns() {
           </div>
         </div>
       </section>
+
     </PageShell>
   );
 }

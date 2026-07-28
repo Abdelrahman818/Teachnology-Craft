@@ -1,6 +1,6 @@
-import { ArrowRight, Code, Globe, Layers } from "lucide-react";
+import { ArrowRight, Code } from "lucide-react";
 import { PageHero, PageShell, PrimaryLink, SectionIntro } from "../../../../components/InnerPage";
-import { ClientMotionArticle } from "../../../../components/ClientMotion";
+import { ClientMotionArticle, ClientMotionDiv } from "../../../../components/ClientMotion";
 export { webDevMetadata as metadata } from "../../../../lib/pageMetadata";
 
 const servicePackages = [
@@ -35,14 +35,75 @@ const servicePackages = [
     ],
   },
 ];
+const services = [
+  {
+    title: "Business Websites",
+    detail:
+      "Professional corporate websites designed to showcase your brand, generate leads, and establish credibility in your industry.",
+  },
+  {
+    title: "E-Commerce Development",
+    detail:
+      "Secure online stores with intuitive shopping experiences, payment integration, inventory management, and scalable architecture.",
+  },
+  {
+    title: "Custom Web Applications",
+    detail:
+      "Tailor-made web applications built to automate workflows, manage business operations, and improve productivity.",
+  },
+  {
+    title: "Website Maintenance",
+    detail:
+      "Keep your website secure, updated, and running smoothly with ongoing maintenance, monitoring, and performance optimisation.",
+  },
+];
+const tech = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "PostgreSQL",
+  "Tailwind CSS",
+  "REST APIs",
+  "Cloud Hosting",
+  "SEO Optimisation",
+  "Performance Optimisation",
+];
+const whyWeb = [
+  {
+    title: "Fast & Responsive",
+    detail:
+      "Every website is optimised for speed and delivers a seamless experience across desktop, tablet, and mobile devices.",
+  },
+  {
+    title: "SEO-Ready Architecture",
+    detail:
+      "Clean code, structured content, and technical optimisation help your website perform better in search engine results.",
+  },
+  {
+    title: "Secure & Scalable",
+    detail:
+      "We build secure websites that grow alongside your business and adapt easily to future requirements.",
+  },
+  {
+    title: "Designed for Conversions",
+    detail:
+      "Strategic layouts, intuitive navigation, and clear calls to action help convert visitors into customers.",
+  },
+];
 
 export default function WebDev() {
   return (
     <PageShell>
+
+      {/* HERO */}
       <PageHero eyebrow="Web Development" title="Build web platforms that stay useful." icon={Code}>
         From high-speed brochure sites to full-featured e-commerce applications, we engineer experiences that perform and evolve with your business.
       </PageHero>
 
+      {/* INTRO */}
       <section className="py-24">
         <div className="container mx-auto px-6 md:px-12">
           <SectionIntro eyebrow="Static or Dynamic" title="Choose the build model that fits your goals.">
@@ -78,6 +139,109 @@ export default function WebDev() {
         </div>
       </section>
 
+      {/* SERVICES */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 md:px-12">
+          <SectionIntro
+            eyebrow="Web Development"
+            title="Custom websites built for performance, scalability, and growth."
+          >
+            Technology Craft develops modern websites and web applications that help
+            businesses establish a strong online presence, improve user experience,
+            and achieve measurable business results through reliable, scalable
+            solutions.
+          </SectionIntro>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {services.map((item) => (
+              <ClientMotionDiv
+                key={item.title}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45 }}
+                className="rounded-3xl border border-slate-800 bg-slate-950/70 p-8"
+              >
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {item.title}
+                </h3>
+
+                <p className="text-slate-400 leading-relaxed">
+                  {item.detail}
+                </p>
+              </ClientMotionDiv>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TECH */}
+      <section className="py-24 bg-slate-900/70 border-y border-slate-800">
+        <div className="container mx-auto px-6 md:px-12">
+          <SectionIntro
+            eyebrow="Development Stack"
+            title="Modern technologies for powerful web solutions."
+          >
+            We use trusted frameworks, programming languages, and cloud technologies
+            to build secure, fast, and scalable websites that perform exceptionally
+            across all devices.
+          </SectionIntro>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {tech.map((item) => (
+              <ClientMotionDiv
+                key={item}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="rounded-3xl border border-slate-800 bg-slate-950/70 p-6 flex items-center justify-center"
+              >
+                <span className="text-lg font-semibold text-white text-center">
+                  {item}
+                </span>
+              </ClientMotionDiv>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* WHY WEB */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 md:px-12">
+          <SectionIntro
+            eyebrow="Why Choose Us"
+            title="Web development that delivers real business value."
+          >
+            A professionally developed website is more than an online presence. It is
+            a powerful business tool that attracts customers, improves engagement,
+            supports marketing efforts, and drives long-term growth.
+          </SectionIntro>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            {whyWeb.map((item) => (
+              <ClientMotionDiv
+                key={item.title}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45 }}
+                className="rounded-3xl border border-slate-800 bg-slate-950/70 p-8"
+              >
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {item.title}
+                </h3>
+
+                <p className="text-slate-400 leading-relaxed">
+                  {item.detail}
+                </p>
+              </ClientMotionDiv>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED CARD */}
       <section className="py-24 bg-slate-900/70 border-y border-slate-800">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -105,6 +269,7 @@ export default function WebDev() {
         </div>
       </section>
 
+      {/* CTA */}
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-600/5" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] bg-blue-600/20 rounded-full blur-[100px] pointer-events-none" />
@@ -116,6 +281,7 @@ export default function WebDev() {
           </div>
         </div>
       </section>
+
     </PageShell>
   );
 }
