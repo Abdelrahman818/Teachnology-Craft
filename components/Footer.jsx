@@ -44,7 +44,7 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-4">Contact</h4>
             <ul className="space-y-2 text-slate-500 text-sm">
               <li><Link href="mailto:contact@technology-craft.com" className="hover:text-blue-400 transition-colors" text="contact@technology-craft.com" /></li>
-              <li><Link href="tel:+0201100240856" className="hover:text-blue-400 transition-colors" text="+02 0110 024 0856" /></li>
+              <li><Link href="tel:+0201042268123" className="hover:text-blue-400 transition-colors" text="+02 0110 024 0856" /></li>
               <li><Link href="/contact" className="hover:text-blue-400 transition-colors" text="Contact Page" /></li>
             </ul>
           </div>
