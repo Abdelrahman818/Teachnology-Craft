@@ -27,7 +27,7 @@ const services = [
 
 const contactInfo = [
   { icon: Mail, label: "General", value: "contact@technology-craft.com", type: "static", link: null },
-  { icon: Phone, label: "Phone", value: "+020 110 024 0856", type: "static", link: null },
+  { icon: Phone, label: "Phone", value: "+020 104 226 8123", type: "static", link: null },
   { icon: FaFacebook, label: "Facebook", value: "Click and visit Techonogy Craft Facebook page", type: "link", link: "https://web.facebook.com/profile.php?id=61565299295319" },
   { icon: FaInstagram, label: "Instagram", value: "Click and visit Technology Craft Instagram page", type: "link", link: "https://www.instagram.com/technology_craft221/?hl=en" },
 ];
