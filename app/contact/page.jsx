@@ -6,9 +6,9 @@ export { contactMetadata as metadata } from "../../lib/pageMetadata";
 export default function Contact() {
   return (
     <PageShell>
-      <PageHero eyebrow="Contact" title="Let's build something precise." icon={MessageSquareText}>
+      {/* <PageHero eyebrow="Contact" title="Let's build something precise." icon={MessageSquareText}>
         Tell us your goal, timeline, and what already exists. We can help clarify the rest.
-      </PageHero>
+      </PageHero> */}
       <ContactForm />
     </PageShell>
   );
