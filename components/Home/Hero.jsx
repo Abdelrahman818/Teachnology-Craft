@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-600/20 rounded-full mix-blend-screen animate-glow" />
-      <div className="absolute top-1/3 -right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-screen animate-glow" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/3 -right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-screen animate-glow" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-900/10 rounded-[100%] blur-[80px]" />
       
       <div className="container mx-auto px-6 md:px-12 relative z-10">
